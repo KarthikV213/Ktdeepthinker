@@ -6,6 +6,7 @@
   <title>KT Deep Thinker</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
 
     * {
       box-sizing: border-box;
@@ -33,9 +34,23 @@
       margin-bottom: 10px;
     }
 
-    header p {
-      font-size: 1.2rem;
-      color: #cce7ff;
+    .typewriter {
+      font-size: 1.3rem;
+      color: #ffdd99;
+      border-right: 2px solid #ffdd99;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 4s steps(40, end) forwards, blink 0.8s infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
     }
 
     nav {
@@ -95,15 +110,52 @@
       text-align: center;
     }
 
-    .contact-links p, .contact-links a {
+    .contact-links a {
+      display: block;
+      margin: 10px 0;
       font-size: 1.1rem;
       color: #ffffff;
-      margin: 10px 0;
       text-decoration: none;
     }
 
     .contact-links a:hover {
       color: #00ffcc;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .counter {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ffcc00;
+    }
+
+    .label {
+      font-size: 1.1rem;
+      color: #fff;
+    }
+
+    .social-icons {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .social-icons a {
+      font-size: 24px;
+      color: #fff;
+      margin: 0 10px;
+      transition: transform 0.3s;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+      color: #00ffff;
     }
 
     footer {
@@ -112,6 +164,22 @@
       padding: 20px;
       color: #ccc;
       font-size: 0.9rem;
+    }
+
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 20px;
+      background: #ffcc00;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      display: none;
+      z-index: 999;
     }
 
     @keyframes fadeIn {
@@ -132,6 +200,11 @@
       section h2 {
         font-size: 1.5rem;
       }
+
+      .stats {
+        flex-direction: column;
+        gap: 20px;
+      }
     }
   </style>
 </head>
@@ -139,7 +212,7 @@
 
   <header>
     <h1>KT Deep Thinker</h1>
-    <p>Inspiring Minds Through Knowledge, Stories & Real Talk</p>
+    <p class="typewriter">Inspiring Minds Through Knowledge, Stories & Real Talk</p>
   </header>
 
   <nav>
@@ -151,6 +224,21 @@
   <section id="about">
     <h2>About Me</h2>
     <p>I am KT Deep Thinker — a passionate content creator on YouTube sharing wisdom, real-life insights, and deep thoughts that inspire and transform. I believe in storytelling, learning, and connecting with curious minds.</p>
+
+    <div class="stats">
+      <div>
+        <div class="counter" data-target="100">0</div>
+        <div class="label">Videos Uploaded</div>
+      </div>
+      <div>
+        <div class="counter" data-target="1000000">0</div>
+        <div class="label">Total Views</div>
+      </div>
+      <div>
+        <div class="counter" data-target="10000">0</div>
+        <div class="label">Subscribers</div>
+      </div>
+    </div>
   </section>
 
   <section id="videos">
@@ -163,14 +251,65 @@
   <section id="contact">
     <h2>Contact</h2>
     <div class="contact-links">
-      <p>Email me: <a href="mailto:factsforworldtelugu4@gmail.com">factsforworldtelugu4@gmail.com</a></p>
-      <p>YouTube: <a href="https://www.youtube.com/@KTDeepThinker" target="_blank">KT Deep Thinker Channel</a></p>
+      <a href="mailto:factsforworldtelugu4@gmail.com">factsforworldtelugu4@gmail.com</a>
+      <a href="https://www.youtube.com/@KTDeepThinker" target="_blank">YouTube Channel</a>
+    </div>
+    <div class="social-icons">
+      <a href="https://www.youtube.com/@KTDeepThinker" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
     </div>
   </section>
 
   <footer>
     &copy; 2025 KT Deep Thinker. All rights reserved.
   </footer>
+
+  <button id="scrollTopBtn" title="Go to top">↑</button>
+
+  <script>
+    // Scroll-to-top button
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.onscroll = () => {
+      scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
+    };
+    scrollBtn.onclick = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // Stats counter animation
+    const counters = document.querySelectorAll(".counter");
+    const speed = 200;
+
+    const animateCounters = () => {
+      counters.forEach(counter => {
+        const updateCount = () => {
+          const target = +counter.getAttribute("data-target");
+          const count = +counter.innerText;
+          const inc = target / speed;
+
+          if (count < target) {
+            counter.innerText = Math.ceil(count + inc);
+            setTimeout(updateCount, 15);
+          } else {
+            counter.innerText = target.toLocaleString();
+          }
+        };
+        updateCount();
+      });
+    };
+
+    // Trigger counter when in view
+    let triggered = false;
+    window.addEventListener('scroll', () => {
+      const statsSection = document.querySelector('.stats');
+      const top = statsSection.getBoundingClientRect().top;
+      if (!triggered && top < window.innerHeight) {
+        animateCounters();
+        triggered = true;
+      }
+    });
+  </script>
 
 </body>
 </html>
