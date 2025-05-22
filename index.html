@@ -3,87 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>KT Deep Thinker - Official Website</title>
+  <title>KT Deep Thinker</title>
   <style>
-    /* Import Google Fonts */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-    /* Reset & base */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      scroll-behavior: smooth;
     }
 
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #1e3c72, #2a5298);
       color: #f0f0f0;
-      text-align: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      animation: fadeIn 1.5s ease forwards;
-    }
-
-    /* Bounce-in animation for header */
-    @keyframes bounceIn {
-      0% {
-        opacity: 0;
-        transform: scale(0.3);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1.05);
-      }
-      70% {
-        transform: scale(0.9);
-      }
-      100% {
-        transform: scale(1);
-      }
     }
 
     header {
-      background-color: rgba(0,0,0,0.6);
+      text-align: center;
       padding: 50px 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      animation: bounceIn 1s ease forwards;
+      background-color: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
 
     header h1 {
-      font-weight: 700;
       font-size: 3rem;
-      margin-bottom: 0.3em;
-      letter-spacing: 2px;
-      text-shadow: 2px 2px 8px #000000aa;
+      font-weight: 700;
+      margin-bottom: 10px;
     }
 
     header p {
-      font-weight: 400;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       color: #cce7ff;
-      text-shadow: 1px 1px 4px #000000aa;
     }
 
-    h2 {
-      margin: 40px 0 20px 0;
-      font-size: 2rem;
+    nav {
+      background-color: rgba(0, 0, 0, 0.3);
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+      gap: 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
       font-weight: 600;
-      text-shadow: 1px 1px 6px #00000099;
+      transition: color 0.3s;
     }
 
-    /* Responsive iframe container */
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+      animation: fadeIn 1s ease;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #ffdd99;
+    }
+
     .video-container {
       position: relative;
-      width: 90%;
-      max-width: 720px;
-      margin: 0 auto;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
       border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     }
 
     .video-container iframe {
@@ -92,58 +89,48 @@
       width: 100%;
       height: 100%;
       border: none;
-      border-radius: 12px;
     }
 
-    .button {
-      display: inline-block;
-      background: #ff3b3b;
-      color: #fff;
-      padding: 14px 30px;
-      margin: 40px auto 60px auto;
-      font-weight: 700;
+    .contact-links {
+      text-align: center;
+    }
+
+    .contact-links p, .contact-links a {
       font-size: 1.1rem;
-      border-radius: 50px;
+      color: #ffffff;
+      margin: 10px 0;
       text-decoration: none;
-      box-shadow: 0 6px 12px rgba(255, 59, 59, 0.5);
-      transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
-    .button:hover {
-      background-color: #ff1e1e;
-      transform: scale(1.05);
-      box-shadow: 0 8px 18px rgba(255, 30, 30, 0.7);
+    .contact-links a:hover {
+      color: #00ffcc;
     }
 
     footer {
-      margin-top: auto;
-      padding: 20px 10px;
+      background-color: rgba(0, 0, 0, 0.3);
+      text-align: center;
+      padding: 20px;
+      color: #ccc;
       font-size: 0.9rem;
-      color: #ddd;
-      background-color: rgba(0,0,0,0.3);
-      text-shadow: 1px 1px 3px #000000aa;
     }
 
-    /* Fade-in animation for body */
     @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Responsive typography */
     @media (max-width: 600px) {
       header h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
       }
-      header p {
-        font-size: 1rem;
+
+      nav {
+        flex-direction: column;
+        gap: 10px;
       }
-      h2 {
+
+      section h2 {
         font-size: 1.5rem;
-      }
-      .button {
-        padding: 12px 25px;
-        font-size: 1rem;
       }
     }
   </style>
@@ -152,20 +139,37 @@
 
   <header>
     <h1>KT Deep Thinker</h1>
-    <p>Inspiring Minds Through Stories, Knowledge & Real Talk</p>
+    <p>Inspiring Minds Through Knowledge, Stories & Real Talk</p>
   </header>
 
-  <h2>Latest YouTube Video</h2>
-  <div class="video-container">
-    <iframe src="https://www.youtube.com/embed/iN5OKnAM29Y" allowfullscreen></iframe>
-  </div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#videos">Videos</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-  <a class="button" href="https://www.youtube.com/@KTDeepThinker" target="_blank" rel="noopener noreferrer">
-    Visit My YouTube Channel
-  </a>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I am KT Deep Thinker — a passionate content creator on YouTube sharing wisdom, real-life insights, and deep thoughts that inspire and transform. I believe in storytelling, learning, and connecting with curious minds.</p>
+  </section>
+
+  <section id="videos">
+    <h2>My Latest Video</h2>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/iN5OKnAM29Y" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-links">
+      <p>Email me: <a href="mailto:factsforworldtelugu4@gmail.com">factsforworldtelugu4@gmail.com</a></p>
+      <p>YouTube: <a href="https://www.youtube.com/@KTDeepThinker" target="_blank">KT Deep Thinker Channel</a></p>
+    </div>
+  </section>
 
   <footer>
-    <p>&copy; 2025 KT Deep Thinker. All rights reserved.</p>
+    &copy; 2025 KT Deep Thinker. All rights reserved.
   </footer>
 
 </body>
