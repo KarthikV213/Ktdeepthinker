@@ -2,176 +2,350 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>KT Deep Thinker</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background: #f4f4f4;
-      color: #333;
+      scroll-behavior: smooth;
     }
 
-    .container {
-      width: 1000px;
-      margin: 0 auto;
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #f0f0f0;
+    }
+
+    #quoteBar {
+      background: #000;
+      color: #ffcc00;
+      text-align: center;
+      padding: 10px;
+      font-style: italic;
+      font-size: 1rem;
     }
 
     header {
-      background-color: #111;
-      color: #fff;
-      padding: 1rem;
       text-align: center;
+      padding: 50px 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
 
-    .quote {
-      font-style: italic;
-      font-size: 1.2rem;
-      margin: 0.5rem 0;
+    header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .typewriter {
+      font-size: 1.3rem;
+      color: #ffdd99;
+      border-right: 2px solid #ffdd99;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 4s steps(40, end) forwards, blink 0.8s infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
     }
 
     nav {
-      background-color: #222;
+      background-color: rgba(0, 0, 0, 0.3);
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      padding: 0.5rem 1rem;
-    }
-
-    nav .links {
-      display: flex;
-      gap: 1rem;
+      padding: 10px;
+      gap: 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      transition: color 0.3s;
     }
 
-    .search-bar input {
-      padding: 0.3rem;
-      border: none;
-      border-radius: 4px;
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    .search-icon {
+      margin-left: auto;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .search-icon:hover {
+      color: #ffcc00;
     }
 
     section {
-      padding: 2rem 1rem;
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+      animation: fadeIn 1s ease;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #ffdd99;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .contact-links {
+      text-align: center;
+    }
+
+    .contact-links a {
+      display: block;
+      margin: 10px 0;
+      font-size: 1.1rem;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .contact-links a:hover {
+      color: #00ffcc;
     }
 
     .stats {
       display: flex;
       justify-content: space-around;
-      margin-top: 1rem;
-    }
-
-    .stat-box {
-      background: #fff;
-      padding: 1rem;
-      border-radius: 8px;
+      flex-wrap: wrap;
       text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      width: 30%;
-      transition: transform 0.3s;
+      margin-top: 40px;
     }
 
-    .stat-box:hover {
-      transform: scale(1.05);
+    .counter {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ffcc00;
+    }
+
+    .label {
+      font-size: 1.1rem;
+      color: #fff;
+    }
+
+    .social-icons {
+      text-align: center;
+      margin-top: 30px;
     }
 
     .social-icons a {
+      font-size: 24px;
+      color: #fff;
       margin: 0 10px;
-      color: #333;
-      font-size: 1.5rem;
-      transition: color 0.3s;
+      transition: transform 0.3s;
     }
 
     .social-icons a:hover {
-      color: #0077cc;
+      transform: scale(1.2);
+      color: #00ffff;
     }
 
     footer {
+      background-color: rgba(0, 0, 0, 0.3);
       text-align: center;
-      padding: 1rem;
-      background: #222;
-      color: white;
+      padding: 20px;
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 20px;
+      background: #ffcc00;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      display: none;
+      z-index: 999;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      section h2 {
+        font-size: 1.5rem;
+      }
+
+      .stats {
+        flex-direction: column;
+        gap: 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>KT Deep Thinker</h1>
-      <p class="quote" id="quote"></p>
-    </header>
 
-    <nav>
-      <div class="links">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#videos">Videos</a>
-        <a href="#contact">Contact</a>
+  <div id="quoteBar"></div>
+
+  <header>
+    <h1>KT Deep Thinker</h1>
+    <p class="typewriter">Inspiring Minds Through Knowledge, Stories & Real Talk</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#videos">Videos</a>
+    <a href="#contact">Contact</a>
+    <i class="fas fa-search search-icon"></i>
+  </nav>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I am KT Deep Thinker — a passionate content creator on YouTube sharing wisdom, real-life insights, and deep thoughts that inspire and transform. I believe in storytelling, learning, and connecting with curious minds.</p>
+
+    <div class="stats">
+      <div>
+        <div class="counter" data-target="248">0</div>
+        <div class="label">Videos Uploaded</div>
       </div>
-      <div class="search-bar">
-        <input type="text" placeholder="Search...">
+      <div>
+        <div class="counter" data-target="150130000">0</div>
+        <div class="label">Total Views</div>
       </div>
-    </nav>
-
-    <section id="home">
-      <h2>Welcome to My Channel</h2>
-      <p>I’m KT Deep Thinker. Explore knowledge, insights, and ideas!</p>
-    </section>
-
-    <section id="about">
-      <h2>About Me</h2>
-      <div class="stats">
-        <div class="stat-box">
-          <h3>248+</h3>
-          <p>Videos Uploaded</p>
-        </div>
-        <div class="stat-box">
-          <h3>150M+</h3>
-          <p>Total Views</p>
-        </div>
-        <div class="stat-box">
-          <h3>821K+</h3>
-          <p>Subscribers</p>
-        </div>
+      <div>
+        <div class="counter" data-target="821000">0</div>
+        <div class="label">Subscribers</div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="videos">
-      <h2>Latest Videos</h2>
-      <p>Check out my <a href="https://www.youtube.com/@KTDeepThinker" target="_blank">YouTube Channel</a> for the latest uploads!</p>
-    </section>
+  <section id="videos">
+    <h2>My Latest Video</h2>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/iN5OKnAM29Y" allowfullscreen></iframe>
+    </div>
+  </section>
 
-    <section id="contact">
-      <h2>Contact Me</h2>
-      <p>Email: <a href="mailto:factsforworldtelugu4@gmail.com">factsforworldtelugu4@gmail.com</a></p>
-      <div class="social-icons">
-        <a href="https://www.instagram.com/kt_deep_thinker/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.youtube.com/@KTDeepThinker" target="_blank"><i class="fab fa-youtube"></i></a>
-      </div>
-    </section>
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-links">
+      <a href="mailto:factsforworldtelugu4@gmail.com">factsforworldtelugu4@gmail.com</a>
+      <a href="https://www.youtube.com/@KTDeepThinker" target="_blank">YouTube Channel</a>
+    </div>
+    <div class="social-icons">
+      <a href="https://www.youtube.com/@KTDeepThinker" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.instagram.com/kt_deep_thinker/" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+  </section>
 
-    <footer>
-      &copy; 2025 KT Deep Thinker
-    </footer>
-  </div>
+  <footer>
+    &copy; 2025 KT Deep Thinker. All rights reserved.
+  </footer>
+
+  <button id="scrollTopBtn" title="Go to top">↑</button>
 
   <script>
+    // Motivational Quotes
     const quotes = [
-      "Believe in yourself and all that you are.",
-      "Every day is a second chance.",
-      "Push yourself, because no one else is going to do it for you.",
-      "Success doesn't just find you. You have to go out and get it.",
+      "Push yourself because no one else is going to do it for you.",
+      "Dream big. Start small. Act now.",
+      "Success is not for the lazy.",
+      "Discipline is the bridge between goals and accomplishment.",
       "Great things never come from comfort zones.",
-      "Dream big. Work hard. Stay focused."
+      "You don’t have to be great to start, but you have to start to be great."
     ];
-    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    document.getElementById("quote").textContent = `"${randomQuote}"`;
+    const quoteBar = document.getElementById("quoteBar");
+    quoteBar.innerText = quotes[Math.floor(Math.random() * quotes.length)];
+
+    // Scroll-to-top button
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.onscroll = () => {
+      scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
+    };
+    scrollBtn.onclick = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // Stats counter animation
+    const counters = document.querySelectorAll(".counter");
+    const speed = 200;
+
+    const animateCounters = () => {
+      counters.forEach(counter => {
+        const updateCount = () => {
+          const target = +counter.getAttribute("data-target");
+          const count = +counter.innerText;
+          const inc = target / speed;
+
+          if (count < target) {
+            counter.innerText = Math.ceil(count + inc);
+            setTimeout(updateCount, 15);
+          } else {
+            counter.innerText = target.toLocaleString();
+          }
+        };
+        updateCount();
+      });
+    };
+
+    // Trigger counter when in view
+    let triggered = false;
+    window.addEventListener('scroll', () => {
+      const statsSection = document.querySelector('.stats');
+      const top = statsSection.getBoundingClientRect().top;
+      if (!triggered && top < window.innerHeight) {
+        animateCounters();
+        triggered = true;
+      }
+    });
   </script>
+
 </body>
 </html>
