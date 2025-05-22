@@ -14,12 +14,16 @@
       color: #333;
     }
 
+    .container {
+      width: 1000px;
+      margin: 0 auto;
+    }
+
     header {
       background-color: #111;
       color: #fff;
       padding: 1rem;
       text-align: center;
-      position: relative;
     }
 
     .quote {
@@ -31,7 +35,6 @@
     nav {
       background-color: #222;
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       padding: 0.5rem 1rem;
@@ -48,10 +51,6 @@
       font-weight: bold;
     }
 
-    .search-bar {
-      margin-left: auto;
-    }
-
     .search-bar input {
       padding: 0.3rem;
       border: none;
@@ -59,14 +58,12 @@
     }
 
     section {
-      padding: 2rem;
+      padding: 2rem 1rem;
     }
 
     .stats {
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-around;
-      gap: 1rem;
       margin-top: 1rem;
     }
 
@@ -76,8 +73,7 @@
       border-radius: 8px;
       text-align: center;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      flex: 1;
-      min-width: 150px;
+      width: 30%;
       transition: transform 0.3s;
     }
 
@@ -102,77 +98,68 @@
       background: #222;
       color: white;
     }
-
-    @media (max-width: 600px) {
-      nav .links {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      .stats {
-        flex-direction: column;
-      }
-    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>KT Deep Thinker</h1>
-    <p class="quote" id="quote"></p>
-  </header>
+  <div class="container">
+    <header>
+      <h1>KT Deep Thinker</h1>
+      <p class="quote" id="quote"></p>
+    </header>
 
-  <nav>
-    <div class="links">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#videos">Videos</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <div class="search-bar">
-      <input type="text" placeholder="Search...">
-    </div>
-  </nav>
-
-  <section id="home">
-    <h2>Welcome to My Channel</h2>
-    <p>I’m KT Deep Thinker. Explore knowledge, insights, and ideas!</p>
-  </section>
-
-  <section id="about">
-    <h2>About Me</h2>
-    <div class="stats">
-      <div class="stat-box">
-        <h3>248+</h3>
-        <p>Videos Uploaded</p>
+    <nav>
+      <div class="links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#videos">Videos</a>
+        <a href="#contact">Contact</a>
       </div>
-      <div class="stat-box">
-        <h3>150M+</h3>
-        <p>Total Views</p>
+      <div class="search-bar">
+        <input type="text" placeholder="Search...">
       </div>
-      <div class="stat-box">
-        <h3>821K+</h3>
-        <p>Subscribers</p>
+    </nav>
+
+    <section id="home">
+      <h2>Welcome to My Channel</h2>
+      <p>I’m KT Deep Thinker. Explore knowledge, insights, and ideas!</p>
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="stats">
+        <div class="stat-box">
+          <h3>248+</h3>
+          <p>Videos Uploaded</p>
+        </div>
+        <div class="stat-box">
+          <h3>150M+</h3>
+          <p>Total Views</p>
+        </div>
+        <div class="stat-box">
+          <h3>821K+</h3>
+          <p>Subscribers</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="videos">
-    <h2>Latest Videos</h2>
-    <p>Check out my <a href="https://www.youtube.com/@KTDeepThinker" target="_blank">YouTube Channel</a> for the latest uploads!</p>
-  </section>
+    <section id="videos">
+      <h2>Latest Videos</h2>
+      <p>Check out my <a href="https://www.youtube.com/@KTDeepThinker" target="_blank">YouTube Channel</a> for the latest uploads!</p>
+    </section>
 
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <p>Email: <a href="mailto:factsforworldtelugu4@gmail.com">factsforworldtelugu4@gmail.com</a></p>
-    <div class="social-icons">
-      <a href="https://www.instagram.com/kt_deep_thinker/" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/@KTDeepThinker" target="_blank"><i class="fab fa-youtube"></i></a>
-    </div>
-  </section>
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <p>Email: <a href="mailto:factsforworldtelugu4@gmail.com">factsforworldtelugu4@gmail.com</a></p>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/kt_deep_thinker/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@KTDeepThinker" target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+    </section>
 
-  <footer>
-    &copy; 2025 KT Deep Thinker
-  </footer>
+    <footer>
+      &copy; 2025 KT Deep Thinker
+    </footer>
+  </div>
 
   <script>
     const quotes = [
