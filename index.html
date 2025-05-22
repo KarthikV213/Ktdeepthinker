@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>KT Deep Thinker</title>
-  <link rel="icon" href="logo.jpg" type="image/jpeg" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
     @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
@@ -20,12 +19,12 @@
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #1e3c72, #2a5298);
       color: #f0f0f0;
-      transition: background 0.3s, color 0.3s;
+      transition: background 0.5s, color 0.5s;
     }
 
-    body.dark-mode {
+    .dark-mode {
       background: #121212;
-      color: #ffffff;
+      color: #ddd;
     }
 
     header {
@@ -34,19 +33,17 @@
       background-color: rgba(0, 0, 0, 0.6);
     }
 
-    header h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
+    header img {
+      width: 60px;
+      vertical-align: middle;
+      border-radius: 50%;
+      margin-right: 10px;
     }
 
-    header h1 img {
-      height: 40px;
-      border-radius: 50%;
+    header h1 {
+      display: inline;
+      font-size: 3rem;
+      font-weight: 700;
     }
 
     .typewriter {
@@ -83,32 +80,16 @@
       color: white;
       text-decoration: none;
       font-weight: 600;
-      transition: color 0.3s;
     }
 
     nav a:hover {
       color: #ffcc00;
     }
 
-    .dark-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #ffcc00;
-      color: black;
-      border: none;
-      border-radius: 30px;
-      padding: 8px 15px;
-      cursor: pointer;
-      z-index: 1001;
-      font-weight: bold;
-    }
-
     section {
       padding: 60px 20px;
       max-width: 900px;
       margin: auto;
-      animation: fadeIn 1s ease;
     }
 
     section h2 {
@@ -134,28 +115,12 @@
       border: none;
     }
 
-    .contact-links {
-      text-align: center;
-    }
-
-    .contact-links a {
-      display: block;
-      margin: 10px 0;
-      font-size: 1.1rem;
-      color: #ffffff;
-      text-decoration: none;
-    }
-
-    .contact-links a:hover {
-      color: #00ffcc;
-    }
-
     .stats {
       display: flex;
       justify-content: space-around;
       flex-wrap: wrap;
-      text-align: center;
       margin-top: 40px;
+      text-align: center;
     }
 
     .counter {
@@ -166,7 +131,27 @@
 
     .label {
       font-size: 1.1rem;
-      color: #fff;
+    }
+
+    .contact-links, form {
+      text-align: center;
+    }
+
+    form input, form textarea {
+      width: 80%;
+      margin: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    form button {
+      padding: 10px 20px;
+      background: #ffcc00;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
     }
 
     .social-icons {
@@ -178,20 +163,28 @@
       font-size: 24px;
       color: #fff;
       margin: 0 10px;
+      position: fixed;
+      right: 10px;
+      background: rgba(0,0,0,0.3);
+      padding: 10px;
+      border-radius: 50%;
+      z-index: 999;
       transition: transform 0.3s;
     }
 
     .social-icons a:hover {
       transform: scale(1.2);
-      color: #00ffff;
+      background: #ffcc00;
+      color: #000;
     }
+
+    .social-icons a:nth-child(1) { bottom: 80px; }
+    .social-icons a:nth-child(2) { bottom: 140px; }
 
     footer {
       background-color: rgba(0, 0, 0, 0.3);
       text-align: center;
       padding: 20px;
-      color: #ccc;
-      font-size: 0.9rem;
     }
 
     #scrollTopBtn {
@@ -205,51 +198,56 @@
       width: 45px;
       height: 45px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
       display: none;
-      z-index: 999;
     }
 
-    .floating-share {
+    .music-toggle, .dark-toggle {
       position: fixed;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 999;
-      padding-left: 5px;
-    }
-
-    .floating-share a {
-      font-size: 20px;
-      color: white;
-      background: #444;
-      padding: 10px;
-      border-radius: 0 5px 5px 0;
-      text-align: center;
-      transition: 0.3s;
-    }
-
-    .floating-share a:hover {
+      top: 20px;
+      right: 20px;
       background: #ffcc00;
-      color: black;
+      padding: 8px 12px;
+      margin: 5px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 1000;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .dark-toggle {
+      top: 60px;
+    }
+
+    .quote {
+      text-align: center;
+      font-size: 1.1rem;
+      margin: 10px;
+      font-style: italic;
+      color: #ffe;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      nav { flex-direction: column; gap: 10px; }
+      .stats { flex-direction: column; }
     }
   </style>
 </head>
 <body>
 
-  <button class="dark-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+  <audio id="bgMusic" loop>
+    <source src="background.wav" type="audio/wav">
+    Your browser does not support the audio element.
+  </audio>
+
+  <button class="music-toggle" onclick="toggleMusic()">🎵 Play Music</button>
+  <button class="dark-toggle" onclick="toggleDarkMode()">🌓 Dark Mode</button>
 
   <header>
-    <h1><img src="logo.jpg" alt="Logo"> KT Deep Thinker</h1>
+    <img src="logo.jpg" alt="Logo" />
+    <h1>KT Deep Thinker</h1>
     <p class="typewriter">Inspiring Minds Through Knowledge, Stories & Real Talk</p>
+    <div class="quote" id="quoteBox">Loading Quote...</div>
   </header>
 
   <nav>
@@ -262,18 +260,9 @@
     <h2>About Me</h2>
     <p>I am KT Deep Thinker — a passionate content creator on YouTube sharing wisdom, real-life insights, and deep thoughts that inspire and transform.</p>
     <div class="stats">
-      <div>
-        <div class="counter" data-target="248">0</div>
-        <div class="label">Videos Uploaded</div>
-      </div>
-      <div>
-        <div class="counter" data-target="150130000">0</div>
-        <div class="label">Total Views</div>
-      </div>
-      <div>
-        <div class="counter" data-target="821000">0</div>
-        <div class="label">Subscribers</div>
-      </div>
+      <div><div class="counter" data-target="248">0</div><div class="label">Videos Uploaded</div></div>
+      <div><div class="counter" data-target="150130000">0</div><div class="label">Total Views</div></div>
+      <div><div class="counter" data-target="821000">0</div><div class="label">Subscribers</div></div>
     </div>
   </section>
 
@@ -286,57 +275,40 @@
 
   <section id="contact">
     <h2>Contact</h2>
-    <div class="contact-links">
-      <form action="https://formspree.io/f/xeogwkwz" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required><br><br>
-        <input type="email" name="_replyto" placeholder="Your Email" required><br><br>
-        <textarea name="message" placeholder="Your Message" rows="5" required></textarea><br><br>
-        <button type="submit">Send</button>
-      </form>
-      <a href="https://www.youtube.com/@KTDeepThinker" target="_blank">YouTube Channel</a>
-    </div>
-    <div class="social-icons">
-      <a href="https://www.youtube.com/@KTDeepThinker" target="_blank"><i class="fab fa-youtube"></i></a>
-      <a href="https://www.instagram.com/kt_deep_thinker/profilecard/?igsh=cWcxaDFvbHlnN2Rv" target="_blank"><i class="fab fa-instagram"></i></a>
-    </div>
+    <form action="https://formspree.io/f/xeogwkwz" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required><br>
+      <input type="email" name="_replyto" placeholder="Your Email" required><br>
+      <textarea name="message" rows="4" placeholder="Your Message" required></textarea><br>
+      <button type="submit">Send</button>
+    </form>
   </section>
 
   <footer>
     &copy; 2025 KT Deep Thinker. All rights reserved.
   </footer>
 
-  <div class="floating-share">
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https://ktdeepthinker.github.io" target="_blank"><i class="fab fa-facebook-f"></i></a>
-    <a href="https://wa.me/?text=Check%20this%20out%20https://ktdeepthinker.github.io" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ktdeepthinker.github.io" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-  </div>
-
   <button id="scrollTopBtn" title="Go to top">↑</button>
 
-  <script>
-    // Dark Mode Toggle
-    function toggleDarkMode() {
-      document.body.classList.toggle("dark-mode");
-    }
+  <div class="social-icons">
+    <a href="https://www.youtube.com/@KTDeepThinker" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.instagram.com/kt_deep_thinker/profilecard/?igsh=cWcxaDFvbHlnN2Rv" target="_blank"><i class="fab fa-instagram"></i></a>
+  </div>
 
-    // Scroll-to-top button
+  <script>
     const scrollBtn = document.getElementById("scrollTopBtn");
     window.onscroll = () => {
       scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
     };
-    scrollBtn.onclick = () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
+    scrollBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // Stats counter animation
     const counters = document.querySelectorAll(".counter");
-    const speed = 200;
+    let triggered = false;
     const animateCounters = () => {
       counters.forEach(counter => {
         const updateCount = () => {
           const target = +counter.getAttribute("data-target");
           const count = +counter.innerText;
-          const inc = target / speed;
+          const inc = target / 200;
           if (count < target) {
             counter.innerText = Math.ceil(count + inc);
             setTimeout(updateCount, 15);
@@ -347,7 +319,7 @@
         updateCount();
       });
     };
-    let triggered = false;
+
     window.addEventListener('scroll', () => {
       const statsSection = document.querySelector('.stats');
       const top = statsSection.getBoundingClientRect().top;
@@ -356,6 +328,24 @@
         triggered = true;
       }
     });
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    function toggleMusic() {
+      const music = document.getElementById("bgMusic");
+      music.paused ? music.play() : music.pause();
+    }
+
+    const quotes = [
+      "Believe in yourself and all that you are.",
+      "Every day is a new beginning.",
+      "Push yourself, because no one else is going to do it for you.",
+      "Success doesn’t come from what you do occasionally, it comes from what you do consistently.",
+      "You are capable of amazing things."
+    ];
+    document.getElementById("quoteBox").innerText = quotes[Math.floor(Math.random() * quotes.length)];
   </script>
 
 </body>
