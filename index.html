@@ -4,9 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>KT Deep Thinker</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" href="logo.jpg" type="image/jpeg" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
 
     * {
       box-sizing: border-box;
@@ -19,37 +20,37 @@
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #1e3c72, #2a5298);
       color: #f0f0f0;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background: #121212;
+      color: #ffffff;
     }
 
     header {
       text-align: center;
-      padding: 50px 20px 30px;
+      padding: 50px 20px;
       background-color: rgba(0, 0, 0, 0.6);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    }
-
-    header img {
-      width: 60px;
-      vertical-align: middle;
-      margin-right: 10px;
-      border-radius: 50%;
     }
 
     header h1 {
-      font-size: 2.8rem;
+      font-size: 3rem;
       font-weight: 700;
-      display: inline-block;
-      color: #fff;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
     }
 
-    .quote {
-      font-style: italic;
-      color: #ffcc00;
-      margin: 10px 0;
+    header h1 img {
+      height: 40px;
+      border-radius: 50%;
     }
 
     .typewriter {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: #ffdd99;
       border-right: 2px solid #ffdd99;
       white-space: nowrap;
@@ -71,9 +72,8 @@
       background-color: rgba(0, 0, 0, 0.3);
       display: flex;
       justify-content: center;
-      align-items: center;
       padding: 10px;
-      gap: 20px;
+      gap: 30px;
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -90,18 +90,18 @@
       color: #ffcc00;
     }
 
-    .search-bar {
-      display: flex;
-      justify-content: center;
-      margin: 20px;
-    }
-
-    .search-bar input {
-      padding: 10px;
+    .dark-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #ffcc00;
+      color: black;
       border: none;
-      border-radius: 20px;
-      width: 60%;
-      font-size: 1rem;
+      border-radius: 30px;
+      padding: 8px 15px;
+      cursor: pointer;
+      z-index: 1001;
+      font-weight: bold;
     }
 
     section {
@@ -124,7 +124,6 @@
       height: 0;
       overflow: hidden;
       border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     }
 
     .video-container iframe {
@@ -133,6 +132,22 @@
       width: 100%;
       height: 100%;
       border: none;
+    }
+
+    .contact-links {
+      text-align: center;
+    }
+
+    .contact-links a {
+      display: block;
+      margin: 10px 0;
+      font-size: 1.1rem;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .contact-links a:hover {
+      color: #00ffcc;
     }
 
     .stats {
@@ -195,6 +210,33 @@
       z-index: 999;
     }
 
+    .floating-share {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 999;
+      padding-left: 5px;
+    }
+
+    .floating-share a {
+      font-size: 20px;
+      color: white;
+      background: #444;
+      padding: 10px;
+      border-radius: 0 5px 5px 0;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .floating-share a:hover {
+      background: #ffcc00;
+      color: black;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -203,10 +245,10 @@
 </head>
 <body>
 
+  <button class="dark-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+
   <header>
-    <img src="logo.jpg" alt="Logo" />
-    <h1>KT Deep Thinker</h1>
-    <p class="quote">"Knowledge begins with curiosity and grows through deep thinking."</p>
+    <h1><img src="logo.jpg" alt="Logo"> KT Deep Thinker</h1>
     <p class="typewriter">Inspiring Minds Through Knowledge, Stories & Real Talk</p>
   </header>
 
@@ -216,14 +258,9 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <div class="search-bar">
-    <input type="text" placeholder="Search content..." />
-  </div>
-
   <section id="about">
     <h2>About Me</h2>
-    <p>I am KT Deep Thinker — a passionate content creator on YouTube sharing wisdom, real-life insights, and deep thoughts that inspire and transform. I believe in storytelling, learning, and connecting with curious minds.</p>
-
+    <p>I am KT Deep Thinker — a passionate content creator on YouTube sharing wisdom, real-life insights, and deep thoughts that inspire and transform.</p>
     <div class="stats">
       <div>
         <div class="counter" data-target="248">0</div>
@@ -249,20 +286,16 @@
 
   <section id="contact">
     <h2>Contact</h2>
-    <form action="https://formspree.io/f/xeogwkwz" method="POST" style="max-width: 500px; margin: auto;">
-      <label for="name">Name</label><br />
-      <input type="text" id="name" name="name" required style="width: 100%; padding: 10px; margin: 10px 0;" /><br />
-
-      <label for="email">Email</label><br />
-      <input type="email" id="email" name="_replyto" required style="width: 100%; padding: 10px; margin: 10px 0;" /><br />
-
-      <label for="message">Message</label><br />
-      <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 10px; margin: 10px 0;"></textarea><br />
-
-      <button type="submit" style="padding: 10px 20px; background-color: #ffcc00; border: none; color: black; font-weight: bold; cursor: pointer;">Send</button>
-    </form>
-
-    <div class="social-icons" style="margin-top: 30px;">
+    <div class="contact-links">
+      <form action="https://formspree.io/f/xeogwkwz" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required><br><br>
+        <input type="email" name="_replyto" placeholder="Your Email" required><br><br>
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea><br><br>
+        <button type="submit">Send</button>
+      </form>
+      <a href="https://www.youtube.com/@KTDeepThinker" target="_blank">YouTube Channel</a>
+    </div>
+    <div class="social-icons">
       <a href="https://www.youtube.com/@KTDeepThinker" target="_blank"><i class="fab fa-youtube"></i></a>
       <a href="https://www.instagram.com/kt_deep_thinker/profilecard/?igsh=cWcxaDFvbHlnN2Rv" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>
@@ -272,9 +305,21 @@
     &copy; 2025 KT Deep Thinker. All rights reserved.
   </footer>
 
+  <div class="floating-share">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://ktdeepthinker.github.io" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://wa.me/?text=Check%20this%20out%20https://ktdeepthinker.github.io" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ktdeepthinker.github.io" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+  </div>
+
   <button id="scrollTopBtn" title="Go to top">↑</button>
 
   <script>
+    // Dark Mode Toggle
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    // Scroll-to-top button
     const scrollBtn = document.getElementById("scrollTopBtn");
     window.onscroll = () => {
       scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
@@ -283,16 +328,15 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
+    // Stats counter animation
     const counters = document.querySelectorAll(".counter");
     const speed = 200;
-
     const animateCounters = () => {
       counters.forEach(counter => {
         const updateCount = () => {
           const target = +counter.getAttribute("data-target");
           const count = +counter.innerText;
           const inc = target / speed;
-
           if (count < target) {
             counter.innerText = Math.ceil(count + inc);
             setTimeout(updateCount, 15);
@@ -303,7 +347,6 @@
         updateCount();
       });
     };
-
     let triggered = false;
     window.addEventListener('scroll', () => {
       const statsSection = document.querySelector('.stats');
